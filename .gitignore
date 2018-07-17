@@ -1,9 +1,5 @@
-#  Local .terraform directories
-**/.terraform/*
-
-# .tfstate files
-*.tfstate
-*.tfstate.*
-
-# .tfvars files
-*.tfvars
+### IntelliJ IDEA ###
+.idea
+*.iml
+*.ipr
+*.class
