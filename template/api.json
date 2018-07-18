@@ -79,7 +79,7 @@
           "properties": {
             "displayName": "Get list of payments",
             "method": "GET",
-            "urlTemplate": "/info",
+            "urlTemplate": "/payments",
             "request": {
               "description": "Gets payments filtered by query params",
               "queryParameters": [
