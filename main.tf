@@ -25,7 +25,7 @@ resource "azurerm_template_deployment" "api" {
     apiName                   = "${var.product}-api"
     apiProductName            = "${var.product}"
     serviceUrl                = "http://payment-api-${var.env}.service.core-compute-${var.env}.internal"
-    apiBasePath               = "payhub-api"
+    apiBasePath               = "payments-api"
     policy                    = "${local.api_policy}"
   }
 }

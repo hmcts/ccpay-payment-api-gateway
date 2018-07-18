@@ -1,6 +1,6 @@
 variable "product" {
   type = "string"
-  default = "payhub"
+  default = "payments"
 }
 
 variable "location" {

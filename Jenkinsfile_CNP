@@ -7,10 +7,10 @@ import uk.gov.hmcts.contino.Environment
 Environment environment = new Environment(env)
 
 onMaster {
-  withInfrastructurePipeline('payment', environment.nonProdName, 'nonprod')
-  withInfrastructurePipeline('payment', environment.prodName, 'prod')
+  withInfrastructurePipeline('payments', environment.nonProdName, 'nonprod')
+  withInfrastructurePipeline('payments', environment.prodName, 'prod')
 }
 
 onDemo {
-  withInfrastructurePipeline('payment', environment.demoName, 'nonprod')
+  withInfrastructurePipeline('payments', environment.demoName, 'nonprod')
 }

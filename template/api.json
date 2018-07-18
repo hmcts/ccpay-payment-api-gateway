@@ -49,7 +49,7 @@
       ],
       "properties": {
         "displayName": "[parameters('apiProductName')]",
-        "subscriptionRequired": true,
+        "subscriptionRequired": false,
         "approvalRequired": true,
         "subscriptionsLimit": 20,
         "state": "published"
@@ -63,7 +63,7 @@
         "[variables('fullApiProductName')]"
       ],
       "properties": {
-        "displayName": "[parameters('apiName')]",
+        "displayName": "Payments API",
         "serviceUrl": "[parameters('serviceUrl')]",
         "path": "[parameters('apiBasePath')]",
         "protocols": [
@@ -81,7 +81,27 @@
           "properties": {
             "displayName": "Get list of payments",
             "method": "GET",
-            "urlTemplate": "/info",
+            "urlTemplate": "/payments",
+            "request": {
+              "description": "Gets payments filtered by query params",
+              "queryParameters": [
+                {
+                  "name":"start_date",
+                  "description": "Format - date (as full-date in RFC3339). The start date to filter on.",
+                  "type":"string"
+                },
+                {
+                  "name":"end_date",
+                  "description": "Format - date (as full-date in RFC3339). The end date to filter on.",
+                  "type":"string"
+                },
+                {
+                  "name":"payment_method",
+                  "description": "the method used for payment. Valid values are CARD and PBA.",
+                  "type":"string"
+                }
+              ]
+            },
             "description": "Returns all existing payments"
           }
         }
