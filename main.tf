@@ -2,8 +2,7 @@ locals {
   # list of the thumbprints of the SSL certificates that should be accepted by the API (gateway)
   allowed_certificate_thumbprints = [
     # API tests
-    "${var.api_gateway_test_certificate_thumbprint}",
-    "5F78A689275613355ADEE0230D2310F6239849E3"
+    "${var.api_gateway_test_certificate_thumbprint}"
   ]
 
   thumbprints_in_quotes = "${formatlist("&quot;%s&quot;", local.allowed_certificate_thumbprints)}"
