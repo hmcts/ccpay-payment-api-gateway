@@ -50,8 +50,6 @@
       "properties": {
         "displayName": "[parameters('apiProductName')]",
         "subscriptionRequired": false,
-        "approvalRequired": true,
-        "subscriptionsLimit": 20,
         "state": "published"
       }
     },
