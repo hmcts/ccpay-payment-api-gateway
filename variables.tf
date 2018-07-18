@@ -21,8 +21,8 @@ variable "jenkins_AAD_objectId" {
 }
 
 # thumbprint of the SSL certificate for API gateway tests
-variable api_gateway_test_certificate_thumbprint {
-  type = "string"
+variable api_gateway_test_certificate_thumbprints {
+  type = "list"
   # TODO: remove default and provide environment-specific values
-  default = ""
+  default = [""]
 }

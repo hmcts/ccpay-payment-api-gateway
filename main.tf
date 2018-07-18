@@ -1,12 +1,6 @@
 locals {
   # list of the thumbprints of the SSL certificates that should be accepted by the API (gateway)
-  allowed_certificate_thumbprints = [
-    # API tests
-    "${var.api_gateway_test_certificate_thumbprint}",
-    "8D81D05C0154423AE548D709CDDF9549E826C036"
-  ]
-
-  thumbprints_in_quotes = "${formatlist("&quot;%s&quot;", local.allowed_certificate_thumbprints)}"
+  thumbprints_in_quotes = "${formatlist("&quot;%s&quot;", ${var.api_gateway_test_certificate_thumbprints})}"
   thumbprints_in_quotes_str = "${join(",", local.thumbprints_in_quotes)}"
   api_policy = "${replace(file("template/api-policy.xml"), "ALLOWED_CERTIFICATE_THUMBPRINTS", local.thumbprints_in_quotes_str)}"
 }
