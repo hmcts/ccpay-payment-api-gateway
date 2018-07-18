@@ -24,5 +24,5 @@ variable "jenkins_AAD_objectId" {
 variable api_gateway_test_certificate_thumbprints {
   type = "list"
   # TODO: remove default and provide environment-specific values
-  default = [""]
+  default = []
 }
