@@ -3,6 +3,7 @@ locals {
   thumbprints_in_quotes = "${formatlist("&quot;%s&quot;", var.api_gateway_test_certificate_thumbprints)}"
   thumbprints_in_quotes_str = "${join(",", local.thumbprints_in_quotes)}"
   api_policy = "${replace(file("template/api-policy.xml"), "ALLOWED_CERTIFICATE_THUMBPRINTS", local.thumbprints_in_quotes_str)}"
+  api_base_path = "payments-api"
 }
 data "template_file" "api_template" {
   template = "${file("${path.module}/template/api.json")}"
@@ -20,7 +21,7 @@ resource "azurerm_template_deployment" "api" {
     apiName                   = "${var.product}-api"
     apiProductName            = "${var.product}"
     serviceUrl                = "http://payment-api-${var.env}.service.core-compute-${var.env}.internal"
-    apiBasePath               = "payments-api"
+    apiBasePath               = "${local.api_base_path}"
     policy                    = "${local.api_policy}"
   }
 }
