@@ -14,16 +14,17 @@
         <!-- generate totp -->
         <set-variable name="clientSecret" value="${s2s_client_secret}" />
         <set-variable name="one_time_password" value="@{
-                // Base32 encoded string to byte array
                 const string Base32AllowedCharacters = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ234567&quot;;
                 var bits = &quot;${s2s_client_secret}&quot;.ToUpper().ToCharArray().Select(c => Convert.ToString(Base32AllowedCharacters.IndexOf(c), 2).PadLeft(5, '0')).Aggregate((a, b) => a + b);
                 var secretKeyBytes = Enumerable.Range(0, bits.Length / 8).Select(i => Convert.ToByte(bits.Substring(i * 8, 8), 2)).ToArray();
+
                 var unixTimestamp = (long) (DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                 var timeIndex = unixTimestamp / 30;
                 byte[] challenge = BitConverter.GetBytes(timeIndex);
                 if (BitConverter.IsLittleEndian) {
                     Array.Reverse(challenge);
                 }
+
                 HMACSHA1 hmac = new HMACSHA1(secretKeyBytes);
                 byte[] hash = hmac.ComputeHash(challenge);
                 int offset = hash[19] &amp; 0xf;
