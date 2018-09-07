@@ -23,7 +23,7 @@
             <set-body>@{
                 return new JObject(
                 new JProperty("microservice","cmc"),
-                new JProperty("oneTimePassword", "(string)context.Variables["one_time_password"])")
+                new JProperty("oneTimePassword", (string)context.Variables["one_time_password"]))
                 ).ToString();
                 }</set-body>
         </send-request>
