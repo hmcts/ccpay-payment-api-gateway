@@ -28,7 +28,6 @@
                 byte[] hash = hmac.ComputeHash(challenge);
                 int offset = hash[19] &amp; 0xf;
                 int truncatedHash = hash[offset] &amp; 0x7f;
-                truncatedHash %= 1000000;
                 return truncatedHash.ToString(&quot;D6&quot;);
             }" />
         <send-request ignore-error="false" timeout="20" response-variable-name="s2sBearerToken" mode="new">
