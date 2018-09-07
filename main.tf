@@ -11,8 +11,8 @@ data "azurerm_key_vault" "payment_key_vault" {
   resource_group_name = "payment-${var.env}"
 }
 
-data "azurerm_key_vault_secret" "gov_pay_keys_reference" {
-  name = "gov-pay-keys-reference"
+data "azurerm_key_vault_secret" "s2s_secret" {
+  name = "gateway-s2s-secret"
   vault_uri = "${data.azurerm_key_vault.payment_key_vault.vault_uri}"
 }
 
@@ -21,7 +21,7 @@ data "template_file" "policy_template" {
 
   vars {
     allowed_certificate_thumbprints    = "${local.thumbprints_in_quotes_str}"
-    client_secret   = "${data.azurerm_key_vault_secret.gov_pay_keys_reference.value}"
+    s2s_client_secret   = "${data.azurerm_key_vault_secret.s2s_secret.value}"
     s2s_base_url    = "${local.s2sUrl}"
   }
 }
