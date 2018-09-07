@@ -16,7 +16,7 @@
         <set-variable name="one_time_password" value="@{
                 // Base32 encoded string to byte array
                 const string Base32AllowedCharacters = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ234567&quot;;
-                var bits = &quot;${s2s_client_secret}&quot;.ToUpper().ToCharArray().Select(c => Convert.ToString(Base32AllowedCharacters.IndexOf(c), 2).PadLeft(5, &apos;0&apos;)).Aggregate((a, b) => a + b);
+                var bits = &quot;${s2s_client_secret}&quot;.ToUpper().ToCharArray().Select(c => Convert.ToString(Base32AllowedCharacters.IndexOf(c), 2).PadLeft(5, '0')).Aggregate((a, b) => a + b);
                 var secretKeyBytes = Enumerable.Range(0, bits.Length / 8).Select(i => Convert.ToByte(bits.Substring(i * 8, 8), 2)).ToArray();
 
                 // Get time interval that is valid for 30 seconds
@@ -31,11 +31,6 @@
                 byte[] hash = hmac.ComputeHash(challenge);
                 int offset = hash[19] &amp; 0xf;
                 int truncatedHash = hash[offset] &amp; 0x7f;
-                for (int i = 1; i &lt; 4; i++)
-                {
-                    truncatedHash &lt;&lt;= 8;
-                    truncatedHash |= hash[offset + i] &amp; 0xff;
-                }
                 truncatedHash %= 1000000;
                 return truncatedHash.ToString(&quot;D6&quot;);
             }" />
