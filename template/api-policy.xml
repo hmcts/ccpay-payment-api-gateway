@@ -12,7 +12,6 @@
             </when>
         </choose>
         <send-request ignore-error="false" timeout="20" response-variable-name="s2sBearerToken" mode="new">
-            <set-url>http://rpe-service-auth-provider-saat.service.core-compute-saat.internal/lease</set-url>
             <set-url>${s2s_base_url}/lease</set-url>
             <set-method>POST</set-method>
             <set-header name="Content-Type" exists-action="override">
@@ -21,7 +20,7 @@
             <set-body>@{
                 return new JObject(
                 new JProperty("microservice","cmc"),
-                new JProperty("oneTimePassword", ${client_secret})
+                new JProperty("oneTimePassword", "${client_secret}")
                 ).ToString();
                 }</set-body>
         </send-request>
