@@ -25,7 +25,7 @@
                 }</set-body>
         </send-request>
         <set-header name="ServiceAuthorization" exists-action="override">
-            <value>@("Bearer " + ((IResponse)context.Variables["s2sBearerToken"]).Body.As<string>())</value>
+            <value>@("Bearer " + ((IResponse)context.Variables["s2sBearerToken"]).Body.As&lt;string&gt;())</value>
         </set-header>
     </inbound>
     <outbound>
