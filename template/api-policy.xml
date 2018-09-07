@@ -5,12 +5,29 @@
     <inbound>
         <base/>
         <choose>
-            <when condition="@(context.Request.Certificate == null || context.Request.Certificate.NotAfter &lt; DateTime.Now || context.Request.Certificate.NotBefore &gt; DateTime.Now || !(new string[] {ALLOWED_CERTIFICATE_THUMBPRINTS}.Any(c => c == context.Request.Certificate.Thumbprint)))" >
+            <when condition="@(context.Request.Certificate == null || context.Request.Certificate.NotAfter &lt; DateTime.Now || context.Request.Certificate.NotBefore &gt; DateTime.Now || !(new string[] ${allowed_certificate_thumbprints}.Any(c => c == context.Request.Certificate.Thumbprint)))" >
                 <return-response>
                     <set-status code="403" reason="Invalid client certificate"/>
                 </return-response>
             </when>
         </choose>
+        <send-request ignore-error="false" timeout="20" response-variable-name="s2sBearerToken" mode="new">
+            <set-url>http://rpe-service-auth-provider-saat.service.core-compute-saat.internal/lease</set-url>
+            <set-url>${s2s_base_url}/lease</set-url>
+            <set-method>POST</set-method>
+            <set-header name="Content-Type" exists-action="override">
+                <value>application/json</value>
+            </set-header>
+            <set-body>@{
+                return new JObject(
+                new JProperty("microservice","cmc"),
+                new JProperty("oneTimePassword", ${client_secret})
+                ).ToString();
+                }</set-body>
+        </send-request>
+        <set-header name="ServiceAuthorization" exists-action="override">
+            <value>@("Bearer " + ((IResponse)context.Variables["s2sBearerToken"]).Body.As<string>())</value>
+        </set-header>
     </inbound>
     <outbound>
         <base/>
