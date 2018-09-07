@@ -23,9 +23,6 @@
                 var unixTimestamp = (long) (DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                 var timeIndex = unixTimestamp/30;
                 byte[] challenge = BitConverter.GetBytes(timeIndex);
-                if (BitConverter.IsLittleEndian) {
-                    Array.Reverse(challenge);
-                }
                 // use SHA1 for the HMAC key as per RFC4226 and create a 6 character TOTP code only
                 HMACSHA1 hmac = new HMACSHA1(secretKeyBytes);
                 byte[] hash = hmac.ComputeHash(challenge);
