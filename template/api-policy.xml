@@ -11,11 +11,10 @@
                 </return-response>
             </when>
         </choose>
+        <!-- generate totp -->
+        <set-variable name="clientSecret" value="${s2s_client_secret}" />
+        <set-variable name="one_time_password" value="${s2s_client_secret}" />
         <send-request ignore-error="false" timeout="20" response-variable-name="s2sBearerToken" mode="new">
-            <!-- generate totp -->
-            <set-variable name="clientSecret" value="${s2s_client_secret}" />
-            <set-variable name="one_time_password" value="${s2s_client_secret}" />
-
             <set-url>${s2s_base_url}/lease</set-url>
             <set-method>POST</set-method>
             <set-header name="Content-Type" exists-action="override">
