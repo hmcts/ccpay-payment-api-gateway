@@ -14,6 +14,10 @@
         <!-- generate totp -->
         <set-variable name="clientSecret" value="${s2s_client_secret}" />
         <set-variable name="one_time_password" value="${s2s_client_secret}" />
+        <set-variable name="SharedKey" value="@{
+                System.Security.Cryptography.HMACSHA256 hasher = new System.Security.Cryptography.HMACSHA256(Convert.FromBase64String((string)context.Variables[&quot;clientSecret&quot;]));
+                return Convert.ToBase64String(hasher.ComputeHash(System.Text.Encoding.UTF8.GetBytes((string)context.Variables[&quot;one_time_password&quot;])));
+            }" />
         <send-request ignore-error="false" timeout="20" response-variable-name="s2sBearerToken" mode="new">
             <set-url>${s2s_base_url}/lease</set-url>
             <set-method>POST</set-method>
@@ -24,6 +28,7 @@
                 return new JObject(
                 new JProperty("microservice","cmc"),
                 new JProperty("oneTimePassword", (string)context.Variables["one_time_password"])
+                new JProperty("sharedKey", (string)context.Variables["SharedKey"])
                 ).ToString();
                 }</set-body>
         </send-request>
