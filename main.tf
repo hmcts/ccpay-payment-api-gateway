@@ -11,8 +11,13 @@ data "azurerm_key_vault" "payment_key_vault" {
   resource_group_name = "payment-${var.env}"
 }
 
-data "azurerm_key_vault_secret" "s2s_secret" {
-  name = "gateway-s2s-secret"
+data "azurerm_key_vault_secret" "s2s_client_secret" {
+  name = "gateway-s2s-client-secret"
+  vault_uri = "${data.azurerm_key_vault.payment_key_vault.vault_uri}"
+}
+
+data "azurerm_key_vault_secret" "s2s_client_id" {
+  name = "gateway-s2s-client-id"
   vault_uri = "${data.azurerm_key_vault.payment_key_vault.vault_uri}"
 }
 
