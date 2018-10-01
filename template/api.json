@@ -101,202 +101,26 @@
                 }
               ]
             },
-            "responses": {
-              "200": {
+            "responses": [
+              {
+                "statusCode": 200,
                 "description": "successful operation",
-                "examples": {
-                  "application/json": {
-                    "payments": [
-                      {
-                        "service_name": "Civil Money Claims",
-                        "payment_group_reference": "2018-11111111111",
-                        "payment_reference": "RC-1111-1111-1111-1111",
-                        "ccd_case_number": "string",
-                        "case_reference": "string",
-                        "date_created": "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
-                        "date_updated": "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
-                        "status": "string",
-                        "channel": "string",
-                        "method": "Card",
-                        "amount": "550.00",
-                        "currency": "GBP",
-                        "site_id": "AA00",
-                        "fees": [
-                          {
-                            "code": "FEE0002",
-                            "version": "1",
-                            "calculated_amount": "550.00",
-                            "volume": "1",
-                            "memo_line": "GOV - Paper fees - Money claim £1,000-1,500",
-                            "natural_account_code": "4481102158"
-                          }
-                        ]
-                      }
-                    ]
+                "representations": [
+                  {
+                    "contentType":"application/json",
+                    "sample":"{\r\n    \"payments\": [\r\n      {\r\n        \"service_name\": \"Civil Money Claims\",\r\n        \"payment_group_reference\": \"2018-11111111111\",\r\n        \"payment_reference\": \"RC-1111-1111-1111-1111\",\r\n        \"ccd_case_number\": \"string\",\r\n        \"case_reference\": \"string\",\r\n        \"date_created\": \"yyyy-MM-dd'T'HH:mm:ss.SSSZ\",\r\n        \"date_updated\": \"yyyy-MM-dd'T'HH:mm:ss.SSSZ\",\r\n        \"status\": \"string\",\r\n        \"channel\": \"string\",\r\n        \"method\": \"Card\",\r\n        \"amount\": \"550.00\",\r\n        \"currency\": \"GBP\",\r\n        \"site_id\": \"AA00\",\r\n        \"fees\": [\r\n          {\r\n            \"code\": \"FEE0002\",\r\n            \"version\": \"1\",\r\n            \"calculated_amount\": \"550.00\",\r\n            \"volume\": \"1\",\r\n            \"memo_line\": \"GOV - Paper fees - Money claim \u00A31,000-1,500\",\r\n            \"natural_account_code\": \"4481102158\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n}"
                   }
-                },
-                "schema": {
-                  "$ref": "#/definitions/PaymentsResponse"
-                }
+                ]
               },
-              "400": {
-                "description": "Bad request"
-              },
-              "401": {
+              {
+                "statusCode": 403,
                 "description": "Invalid client certificate"
+              },
+              {
+                "statusCode": 400,
+                "description": "Bad request"
               }
-            },
-            "definitions": {
-              "PaymentsResponse": {
-                "type": "object",
-                "properties": {
-                  "self": {
-                    "type": "string",
-                    "description": "self referencing hyperlink"
-                  },
-                  "index": {
-                    "type": "integer",
-                    "description": "current index"
-                  },
-                  "page_size": {
-                    "type": "integer",
-                    "description": "number of records in the current page"
-                  },
-                  "total": {
-                    "type": "integer",
-                    "description": "total number of records"
-                  },
-                  "first": {
-                    "type": "string",
-                    "description": "hyperlink to go to the first page"
-                  },
-                  "next": {
-                    "type": "string",
-                    "description": "hyperlink to go to the next page"
-                  },
-                  "previous": {
-                    "type": "string",
-                    "description": "hyperlink to go to the previous page"
-                  },
-                  "last": {
-                    "type": "string",
-                    "description": "hyperlink to go to the last page"
-                  },
-                  "payments": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/definitions/Payment"
-                    }
-                  }
-                }
-              },
-              "Payment": {
-                "type": "object",
-                "properties": {
-                  "service_name": {
-                    "type": "string",
-                    "description": "The reform service through which the payment was made",
-                    "example": "Civil Money Claims"
-                  },
-                  "payment_group_reference": {
-                    "type": "string",
-                    "description": "Group associated to multiple payments",
-                    "example": "2018-11111111111"
-                  },
-                  "payment_reference": {
-                    "type": "string",
-                    "description": "Unique identifier for the payment",
-                    "example": "RC-1111-1111-1111-1111"
-                  },
-                  "ccd_case_number": {
-                    "type": "string",
-                    "description": "ccd case number associated to the payment"
-                  },
-                  "case_reference": {
-                    "type": "string",
-                    "description": "Legacy reference associated to the payment"
-                  },
-                  "date_created": {
-                    "type": "string",
-                    "example": "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                  },
-                  "date_updated": {
-                    "type": "string",
-                    "example": "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                  },
-                  "status": {
-                    "type": "string"
-                  },
-                  "channel": {
-                    "type": "string"
-                  },
-                  "method": {
-                    "type": "string",
-                    "description": "the method used for payment",
-                    "example": "Card"
-                  },
-                  "amount": {
-                    "type": "integer",
-                    "format": "double",
-                    "description": "Payment amount in GBP",
-                    "example": "550.00"
-                  },
-                  "currency": {
-                    "type": "string",
-                    "example": "GBP"
-                  },
-                  "site_id": {
-                    "type": "string",
-                    "description": "Standardised court identification number",
-                    "example": "AA00"
-                  },
-                  "fees": {
-                    "$ref": "#/definitions/Fees"
-                  }
-                }
-              },
-              "Fees": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Fee"
-                }
-              },
-              "Fee": {
-                "type": "object",
-                "properties": {
-                  "code": {
-                    "type": "string",
-                    "description": "Fee identifier",
-                    "example": "X0025"
-                  },
-                  "version": {
-                    "type": "integer",
-                    "format": "int32",
-                    "description": "Version of the fee applicable for a given time period",
-                    "example": "1"
-                  },
-                  "calculated_amount": {
-                    "type": "integer",
-                    "format": "double",
-                    "description": "Calculated amount for the fee. Usually this will be the fee amount. In case where the fees were charged for the number of copies, the calculated amount is the amount of fees for the total number of copies.",
-                    "example": "550.00"
-                  },
-                  "volume_amount": {
-                    "type": "integer",
-                    "description": "Fee volume e.g. in the case where fees were charged for the number of copies. In case where the nature of the fees was such that volume is not application i.e. application fee, then this will be defaulted to 1",
-                    "example": "1"
-                  },
-                  "memo_line": {
-                    "type": "string",
-                    "example": "GOV - Paper fees - Money claim £1,000-1,500"
-                  },
-                  "natural_account_code": {
-                    "type": "string",
-                    "example": "4481102158"
-                  }
-                }
-              }
-            }
+            ]
           }
         }
 
