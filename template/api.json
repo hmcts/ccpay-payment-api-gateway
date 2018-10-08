@@ -70,7 +70,7 @@
       },
       "resources": [
         {
-          "apiVersion": "2017-03-01",
+          "apiVersion": "2.1",
           "type": "operations",
           "name": "getPayments",
           "dependsOn": [
@@ -86,17 +86,17 @@
               "queryParameters": [
                 {
                   "name": "start_date",
-                  "description": "The start datetime to filter on. Format yyyy-MM-dd'T'HH:mm:ss",
+                  "description": "Format - date time (as full-date in RFC3339). The start date time to filter on. If the time is not supplied then it will be defaulted to 00:00:00",
                   "type": "string"
                 },
                 {
                   "name": "end_date",
-                  "description": "The end datetime to filter on. Format yyyy-MM-dd'T'HH:mm:ss",
+                  "description": "Format - date time (as full-date in RFC3339). The end date to filter on. If the time is not supplied then it will be defaulted to 00:00:00",
                   "type": "string"
                 },
                 {
                   "name": "payment_method",
-                  "description": "the method used for payment. Valid values are CARD, PBA, CASH, CHEQUE, POSTAL_ORDER and BARCLAY_CARD",
+                  "description": "the method used for payment. Available values : CARD, PBA, CASH, CHEQUE, POSTAL_ORDER",
                   "type": "string"
                 }
               ]
