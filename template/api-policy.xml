@@ -62,13 +62,19 @@
             <when condition="@(context.Response.StatusCode == 200)">
             <set-body>@{
                 var response = context.Response.Body.As&lt;JObject&gt;();
+                var payments = (JArray) response["payments"];
+                foreach (JObject payment in payments) {
+                    payment.Add("bank_giro_credit_slip_number", payment.GetValue("giro_slip_no"));
+                    payment.Remove("giro_slip_no");
 
-                response.Add("volume_amount", response.GetValue("volume"));
-                response.Remove("volume");
-
-                response.Add("bank_giro_credit_slip_number", response.GetValue("giro_slip_no"));
-                response.Remove("giro_slip_no");
-
+                    var fees = (JArray) payment["fees"];
+                    foreach (JObject fee in fees) {
+                        fee.Add("volume_amount", fee.GetValue("volume"));
+                        fee.Remove("volume");
+                        fee.Add("fee_reference", fee.GetValue("reference"));
+                        fee.Remove("reference");
+                    }
+                }
                 return response.ToString();
                 }
             </set-body>
