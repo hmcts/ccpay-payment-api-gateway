@@ -60,24 +60,9 @@
         <base/>
         <choose>
             <when condition="@(context.Response.StatusCode == 200)">
-            <set-body>@{
-                var response = context.Response.Body.As&lt;JObject&gt;();
-                var payments = (JArray) response["payments"];
-                foreach (JObject payment in payments) {
-                    payment.Add("bank_giro_credit_slip_number", payment.GetValue("giro_slip_no"));
-                    payment.Remove("giro_slip_no");
-
-                    var fees = (JArray) payment["fees"];
-                    foreach (JObject fee in fees) {
-                        fee.Add("volume_amount", fee.GetValue("volume"));
-                        fee.Remove("volume");
-                        fee.Add("fee_reference", fee.GetValue("reference"));
-                        fee.Remove("reference");
-                    }
-                }
-                return response.ToString();
-                }
-            </set-body>
+                <find-and-replace from="giro_slip_no" to="bank_giro_credit_slip_number" />
+                <find-and-replace from="volume" to="volume_amount" />
+                <find-and-replace from="&quot;\reference&quot;\" to="&quot;\fee_reference&quot;\" />
             </when>
         </choose>
     </outbound>
