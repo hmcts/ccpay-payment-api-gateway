@@ -62,8 +62,12 @@
             <when condition="@(context.Response.StatusCode == 200)">
             <set-body>@{
                 var response = context.Response.Body.As&lt;JObject&gt;();
-                response.Property("volume").Rename("volume_amount");
-                response.Property("giro_slip_no").Rename("bank_giro_credit_slip_number");
+
+                response.Add("volume_amount", response.GetValue("volume"));
+                response.Remove("volume");
+
+                response.Add("bank_giro_credit_slip_number", response.GetValue("giro_slip_no").Value);
+                response.Remove("giro_slip_no");
 
                 return response.ToString();
                 }
