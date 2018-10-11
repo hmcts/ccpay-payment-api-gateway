@@ -58,6 +58,18 @@
     </inbound>
     <outbound>
         <base/>
+        <choose>
+            <when condition="@(context.Response.StatusCode == 200)">
+            <set-body>@{
+                var response = context.Response.Body.As&lt;JObject&gt;();
+                response.Property("volume").Rename("volume_amount");
+                response.Property("giro_slip_no").Rename("bank_giro_credit_slip_number");
+
+                return response.ToString();
+                }
+            </set-body>
+            </when>
+        </choose>
     </outbound>
     <on-error>
         <base/>
