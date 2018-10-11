@@ -66,7 +66,7 @@
                 response.Add("volume_amount", response.GetValue("volume"));
                 response.Remove("volume");
 
-                response.Add("bank_giro_credit_slip_number", response.GetValue("giro_slip_no").Value);
+                response.Add("bank_giro_credit_slip_number", response.GetValue("giro_slip_no"));
                 response.Remove("giro_slip_no");
 
                 return response.ToString();
