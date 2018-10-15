@@ -1,1 +1,1 @@
-api_gateway_test_certificate_thumbprints = ["F43062CAFE57FCF80272A54AE117BF2006C32033"]
+api_gateway_test_certificate_thumbprints = ["B17BAF84AEE525C91A416164DD9C70881958AF6F"]
