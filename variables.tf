@@ -26,3 +26,8 @@ variable api_gateway_test_certificate_thumbprints {
   # TODO: remove default and provide environment-specific values
   default = []
 }
+
+variable "core_product" {
+  type    = "string"
+  default = "ccpay"
+}

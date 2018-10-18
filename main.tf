@@ -7,8 +7,8 @@ locals {
   api_base_path = "payments-api"
 }
 data "azurerm_key_vault" "payment_key_vault" {
-  name = "ccpay-${var.env}"
-  resource_group_name = "ccpay-${var.env}"
+  name = "${var.core_product}-${var.env}"
+  resource_group_name = "${var.core_product}-${var.env}"
 }
 
 data "azurerm_key_vault_secret" "s2s_client_secret" {
