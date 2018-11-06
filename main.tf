@@ -5,6 +5,7 @@ locals {
   thumbprints_in_quotes_str = "${join(",", local.thumbprints_in_quotes)}"
   api_policy = "${replace(file("template/api-policy.xml"), "ALLOWED_CERTIFICATE_THUMBPRINTS", local.thumbprints_in_quotes_str)}"
   api_base_path = "payments-api"
+  dummy = "dummy"
 }
 data "azurerm_key_vault" "payment_key_vault" {
   name = "ccpay-${var.env}"
