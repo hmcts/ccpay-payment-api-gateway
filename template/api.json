@@ -131,8 +131,8 @@
             "[variables('fullApiName')]"
           ],
           "properties": {
-            "displayName": "Get list of payments",
-            "description": "Returns all payments that match filter criteria",
+            "displayName": "Update payment status",
+            "description": "Update payment status by payment reference",
             "method": "PATCH",
             "urlTemplate": "/payments/{reference}/status/{status}",
             "request": {
