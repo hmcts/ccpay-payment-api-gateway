@@ -138,7 +138,6 @@
             "templateParameters": [
               {
                 "summary": "Update payment status by payment reference",
-                "pathParameters": [
                   {
                     "name": "reference",
                     "description": "Payment reference",
