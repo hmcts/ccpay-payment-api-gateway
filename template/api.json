@@ -135,18 +135,22 @@
             "description": "Update payment status by payment reference",
             "method": "PATCH",
             "urlTemplate": "/payments/{reference}/status/{status}",
-            "request": {
-              "description": "Update payment status by payment reference",
+            "operations": {
+              "summary": "Update payment status by payment reference",
               "parameters": [
                 {
+                  "paramType": "path",
                   "name": "reference",
                   "description": "Payment reference",
-                  "type": "string"
+                  "type": "string",
+                  "required": true
                 },
                 {
+                  "paramType": "path",
                   "name": "status",
                   "description": "Payment status, valid values : started, success, failed",
-                  "type": "string"
+                  "type": "string",
+                  "required": true
                 }
               ]
             },
