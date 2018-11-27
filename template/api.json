@@ -123,7 +123,8 @@
             ]
           }
         },
-        {"apiVersion": "2017-03-01",
+        {
+          "apiVersion": "2017-03-01",
           "type": "operations",
           "name": "updatePaymentStatus",
           "dependsOn": [
@@ -159,7 +160,8 @@
                 "description": "Bad request"
               }
             ]
-          }}
+          }
+        }
       ]
     },
     {
