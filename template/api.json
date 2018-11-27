@@ -135,20 +135,18 @@
             "description": "Update payment status for the payment reference",
             "method": "PATCH",
             "urlTemplate": "/payments/{reference}/status/{status}",
-            "templateParameters": {
-              "parameters": [
-                {
-                  "name": "reference",
-                  "description": "Payment reference",
-                  "type": "string"
-                },
-                {
-                  "name": "status",
-                  "description": "Payment status, valid values : started, success, failed",
-                  "type": "string"
-                }
-              ]
-            },
+            "templateParameters": [
+              {
+                "name": "reference",
+                "description": "Payment reference",
+                "type": "string"
+              },
+              {
+                "name": "status",
+                "description": "Payment status, valid values : started, success, failed",
+                "type": "string"
+              }
+            ],
             "responses": [
               {
                 "statusCode": 204,
