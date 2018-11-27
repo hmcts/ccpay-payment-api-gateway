@@ -136,7 +136,6 @@
             "method": "PATCH",
             "urlTemplate": "/payments/{reference}/status/{status}",
             "templateParameters": {
-              "description": "Update payment status by payment reference",
               "parameters": [
                 {
                   "name": "reference",
