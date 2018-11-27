@@ -132,27 +132,24 @@
           ],
           "properties": {
             "displayName": "Update payment status",
-            "description": "Update payment status by payment reference",
+            "description": "Update payment status for the payment reference",
             "method": "PATCH",
             "urlTemplate": "/payments/{reference}/status/{status}",
-            "templateParameters": [
-              {
-                "summary": "Update payment status by payment reference",
-                  {
-                    "name": "reference",
-                    "description": "Payment reference",
-                    "type": "string",
-                    "required": true
-                  },
-                  {
-                    "name": "status",
-                    "description": "Payment status, valid values : started, success, failed",
-                    "type": "string",
-                    "required": true
-                  }
-                ]
-              }
-            ],
+            "templateParameters": {
+              "description": "Update payment status by payment reference",
+              "parameters": [
+                {
+                  "name": "reference",
+                  "description": "Payment reference",
+                  "type": "string"
+                },
+                {
+                  "name": "status",
+                  "description": "Payment status, valid values : started, success, failed",
+                  "type": "string"
+                }
+              ]
+            },
             "responses": [
               {
                 "statusCode": 204,
