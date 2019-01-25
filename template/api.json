@@ -122,8 +122,43 @@
               }
             ]
           }
+        },
+        {
+          "apiVersion": "2017-03-01",
+          "type": "operations",
+          "name": "updatePaymentStatus",
+          "dependsOn": [
+            "[variables('fullApiName')]"
+          ],
+          "properties": {
+            "displayName": "Update payment status",
+            "description": "Update payment status for the payment reference",
+            "method": "PATCH",
+            "urlTemplate": "/payments/{reference}/status/{status}",
+            "templateParameters": [
+              {
+                "name": "reference",
+                "description": "Payment reference",
+                "type": "string"
+              },
+              {
+                "name": "status",
+                "description": "Payment status, valid values : started, success, failed",
+                "type": "string"
+              }
+            ],
+            "responses": [
+              {
+                "statusCode": 204,
+                "description": "Update successful"
+              },
+              {
+                "statusCode": 400,
+                "description": "Bad request"
+              }
+            ]
+          }
         }
-
       ]
     },
     {
