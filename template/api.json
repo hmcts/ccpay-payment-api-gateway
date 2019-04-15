@@ -122,6 +122,46 @@
               }
             ]
           }
+        },
+        {
+          "apiVersion": "2017-03-01",
+          "type": "operations",
+          "name": "paymentByReference",
+          "dependsOn": [
+            "[variables('fullApiName')]"
+          ],
+          "properties": {
+            "displayName": "Gets payment by reference",
+            "description": "Gets payment by reference",
+            "method": "GET",
+            "urlTemplate": "/payments/{payment_reference}",
+            "templateParameters": [
+              {
+                "name": "payment_reference",
+                "description": "Payment reference",
+                "type": "string"
+              }
+            ],
+            "responses": [
+              {
+                "statusCode": 200,
+                "description": "successful operation",
+                "representations": [
+                  {
+                    "contentType":"application/json"
+                  }
+                ]
+              },
+              {
+                "statusCode": 403,
+                "description": "Invalid client certificate or unauthorised token"
+              },
+              {
+                "statusCode": 404,
+                "description": "Payment not found"
+              }
+            ]
+          }
         }
 
       ]
