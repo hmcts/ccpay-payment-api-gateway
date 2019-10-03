@@ -2,15 +2,4 @@
 //noinspection GroovyUnusedAssignment
 @Library("Infrastructure") _
 
-import uk.gov.hmcts.contino.Environment
-
-Environment environment = new Environment(env)
-
-onMaster {
-  withInfrastructurePipeline('payments', environment.nonProdName, 'nonprod')
-  withInfrastructurePipeline('payments', environment.prodName, 'prod')
-}
-
-onDemo {
-  withInfrastructurePipeline('payments', environment.demoName, 'nonprod')
-}
+withInfraPipeline('payments') {}
