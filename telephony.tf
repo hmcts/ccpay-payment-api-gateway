@@ -13,6 +13,7 @@ module "ccpay-telephony-api" {
   api_mgmt_rg   = "core-infra-${var.env}"
   revision      = "1"
   product_id    = "${module.ccpay-telephony-product.product_id}"
+  service_url   = "${local.payments_api_url}"
   name          = "telephony-api"
   display_name  = "Telephony API"
   path          = "telephony-api"
@@ -28,7 +29,6 @@ data "template_file" "telephony_policy_template" {
     s2s_client_id                   = "${data.azurerm_key_vault_secret.s2s_client_id.value}"
     s2s_client_secret               = "${data.azurerm_key_vault_secret.s2s_client_secret.value}"
     s2s_base_url                    = "${local.s2sUrl}"
-    service_url                     = "${local.payments_api_url}"
   }
 }
 

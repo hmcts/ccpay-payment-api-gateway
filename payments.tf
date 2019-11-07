@@ -15,6 +15,7 @@ module "ccpay-payments-api" {
   api_mgmt_name = "core-api-mgmt-${var.env}"
   api_mgmt_rg   = "core-infra-${var.env}"
   revision      = "1"
+  service_url   = "${local.payments_api_url}"
   product_id    = "${module.ccpay-payments-product.product_id}"
   name          = "payments-api"
   display_name  = "Payments API"
@@ -31,7 +32,6 @@ data "template_file" "payments_policy_template" {
     s2s_client_id                   = "${data.azurerm_key_vault_secret.s2s_client_id.value}"
     s2s_client_secret               = "${data.azurerm_key_vault_secret.s2s_client_secret.value}"
     s2s_base_url                    = "${local.s2sUrl}"
-    service_url                     = "${local.payments_api_url}"
   }
 }
 

@@ -10,7 +10,7 @@ locals {
   telephony_thumbprints_in_quotes_str    = "${join(",", local.telephony_thumbprints_in_quotes)}"
   bulkscanning_thumbprints_in_quotes     = "${formatlist("&quot;%s&quot;", var.bulkscanning_api_gateway_certificate_thumbprints)}"
   bulkscanning_thumbprints_in_quotes_str = "${join(",", local.bulkscanning_thumbprints_in_quotes)}"
-  
+
   s2sUrl                                 = "http://rpe-service-auth-provider-${var.env}.service.core-compute-${var.env}.internal"
   payments_api_url                       = "http://payment-api-${var.env}.service.core-compute-${var.env}.internal"
   bulkscanning_api_url                   = "http://ccpay-bulkscanning-api-${var.env}.service.core-compute-${var.env}.internal"
