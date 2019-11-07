@@ -1,8 +1,8 @@
 module "ccpay-payments-product" {
   source = "git@github.com:hmcts/cnp-module-api-mgmt-product?ref=master"
 
-  api_mgmt_name         = "core-api-mgmt-demodata"
-  api_mgmt_rg           = "core-infra-demodata-rg"
+  api_mgmt_name = "core-api-mgmt-${var.env}"
+  api_mgmt_rg   = "core-infra-${var.env}"
   subscription_required = false
   approval_required     = false
   subscriptions_limit   = "0"
@@ -12,8 +12,8 @@ module "ccpay-payments-product" {
 
 module "ccpay-payments-api" {
   source        = "git@github.com:hmcts/cnp-module-api-mgmt-api?ref=master"
-  api_mgmt_name = "core-api-mgmt-demodata"
-  api_mgmt_rg   = "core-infra-demodata-rg"
+  api_mgmt_name = "core-api-mgmt-${var.env}"
+  api_mgmt_rg   = "core-infra-${var.env}"
 
   revision     = "1"
   product_id   = "${module.ccpay-payments-product.product_id}"
@@ -38,8 +38,8 @@ data "template_file" "payments_policy_template" {
 module "ccpay-payments-policy" {
   source = "git@github.com:hmcts/cnp-module-api-mgmt-api-policy?ref=master"
 
-  api_mgmt_name = "core-api-mgmt-demodata"
-  api_mgmt_rg   = "core-infra-demodata-rg"
+  api_mgmt_name = "core-api-mgmt-${var.env}"
+  api_mgmt_rg   = "core-infra-${var.env}"
 
   api_name               = "${module.ccpay-payments-api.name}"
   api_policy_xml_content = "${data.template_file.payments_policy_template.rendered}"

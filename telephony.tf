@@ -1,8 +1,8 @@
 module "ccpay-telephony-product" {
   source = "git@github.com:hmcts/cnp-module-api-mgmt-product?ref=master"
 
-  api_mgmt_name = "core-api-mgmt-demodata"
-  api_mgmt_rg   = "core-infra-demodata-rg"
+  api_mgmt_name = "core-api-mgmt-${var.env}"
+  api_mgmt_rg   = "core-infra-${var.env}"
 
   name = "telephony"
 }
@@ -10,8 +10,8 @@ module "ccpay-telephony-product" {
 module "ccpay-telephony-api" {
   source = "git@github.com:hmcts/cnp-module-api-mgmt-api?ref=master"
 
-  api_mgmt_name = "core-api-mgmt-demodata"
-  api_mgmt_rg   = "core-infra-demodata-rg"
+  api_mgmt_name = "core-api-mgmt-${var.env}"
+  api_mgmt_rg   = "core-infra-${var.env}"
 
   revision     = "1"
   product_id   = "${module.ccpay-telephony-product.product_id}"
@@ -36,8 +36,8 @@ data "template_file" "telephony_policy_template" {
 module "ccpay-telephony-policy" {
   source = "git@github.com:hmcts/cnp-module-api-mgmt-api-policy?ref=master"
 
-  api_mgmt_name = "core-api-mgmt-demodata"
-  api_mgmt_rg   = "core-infra-demodata-rg"
+  api_mgmt_name = "core-api-mgmt-${var.env}"
+  api_mgmt_rg   = "core-infra-${var.env}"
 
   api_name               = "${module.ccpay-telephony-api.name}"
   api_policy_xml_content = "${data.template_file.telephony_policy_template.rendered}"

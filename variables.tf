@@ -21,22 +21,16 @@ variable "jenkins_AAD_objectId" {
 }
 
 # thumbprint of the SSL certificate for API gateway Telephony
-variable payments_test_certificate_thumbprints {
+variable payments_api_gateway_certificate_thumbprints {
   type = "list"
-  # TODO: remove default and provide environment-specific values
-  default = []
 }
 
 # thumbprint of the SSL certificate for API gateway Payments API
 variable telephony_api_gateway_certificate_thumbprints {
   type = "list"
-  # TODO: remove default and provide environment-specific values
-  default = []
 }
 
-# thumbprint of the SSL certificate for API gateway Payments API
+# thumbprint of the SSL certificate for API gateway bulkscanning payment API
 variable  bulkscanning_api_gateway_certificate_thumbprints {
   type = "list"
-  # TODO: remove default and provide environment-specific values
-  default = []
 }
