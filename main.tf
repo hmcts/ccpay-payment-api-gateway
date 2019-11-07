@@ -1,5 +1,5 @@
 provider "azurerm" {
-  version = "1.22.1"
+  version = "1.36.1"
 }
 
 locals {
@@ -21,10 +21,10 @@ data "azurerm_key_vault" "payment_key_vault" {
 
 data "azurerm_key_vault_secret" "s2s_client_secret" {
   name         = "gateway-s2s-client-secret"
-  key_vault_id = data.azurerm_key_vault.payment_key_vault.id
+  key_vault_id = "${data.azurerm_key_vault.payment_key_vault.id}"
 }
 
 data "azurerm_key_vault_secret" "s2s_client_id" {
   name         = "gateway-s2s-client-id"
-  key_vault_id = data.azurerm_key_vault.payment_key_vault.id
+  key_vault_id = "${data.azurerm_key_vault.payment_key_vault.id}"
 }
