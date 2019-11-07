@@ -29,7 +29,7 @@ data "template_file" "bulkscanning_policy_template" {
     allowed_certificate_thumbprints = "${local.bulkscanning_thumbprints_in_quotes_str}"
     s2s_client_id                   = "${data.azurerm_key_vault_secret.s2s_client_id.value}"
     s2s_client_secret               = "${data.azurerm_key_vault_secret.s2s_client_secret.value}"
-    s2s_base_url                    = "${data.s2s_base_url}"
+    s2s_base_url                    = "${local.s2sUrl}"
   }
 }
 
