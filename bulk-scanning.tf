@@ -12,13 +12,12 @@ module "ccpay-bulkscanning-api" {
 
   api_mgmt_name = "core-api-mgmt-${var.env}"
   api_mgmt_rg   = "core-infra-${var.env}"
-
-  revision     = "1"
-  product_id   = "${module.ccpay-bulkscanning-product.product_id}"
-  name         = "bulk-scanning-payment-api"
-  display_name = "bulk-scanning payments API"
-  path         = "bulk-scanning-payment"
-  swagger_url  = "https://raw.githubusercontent.com/hmcts/reform-api-docs/master/docs/specs/ccpay-payment-app.bulk-scanning.json"
+  revision      = "1"
+  product_id    = "${module.ccpay-bulkscanning-product.product_id}"
+  name          = "bulk-scanning-payment-api"
+  display_name  = "bulk-scanning payments API"
+  path          = "bulk-scanning-payment"
+  swagger_url   = "https://raw.githubusercontent.com/hmcts/reform-api-docs/master/docs/specs/ccpay-payment-app.bulk-scanning.json"
 }
 
 // TODO, look at why this is generating a new template each time
@@ -30,6 +29,7 @@ data "template_file" "bulkscanning_policy_template" {
     s2s_client_id                   = "${data.azurerm_key_vault_secret.s2s_client_id.value}"
     s2s_client_secret               = "${data.azurerm_key_vault_secret.s2s_client_secret.value}"
     s2s_base_url                    = "${local.s2sUrl}"
+    service_url                     = "${local.bulkscanning_api_url}"
   }
 }
 
