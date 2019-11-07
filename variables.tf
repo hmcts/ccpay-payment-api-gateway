@@ -1,5 +1,5 @@
 variable "product" {
-  type = "string"
+  type    = "string"
   default = "payments"
 }
 
@@ -20,9 +20,17 @@ variable "jenkins_AAD_objectId" {
   description = "(Required) The Azure AD object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies."
 }
 
-# thumbprint of the SSL certificate for API gateway tests
-variable api_gateway_test_certificate_thumbprints {
+# thumbprint of the SSL certificate for API gateway Telephony
+variable payments_api_gateway_certificate_thumbprints {
   type = "list"
-  # TODO: remove default and provide environment-specific values
-  default = []
+}
+
+# thumbprint of the SSL certificate for API gateway Payments API
+variable telephony_api_gateway_certificate_thumbprints {
+  type = "list"
+}
+
+# thumbprint of the SSL certificate for API gateway bulkscanning payment API
+variable  bulkscanning_api_gateway_certificate_thumbprints {
+  type = "list"
 }
