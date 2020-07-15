@@ -12,5 +12,5 @@ onMaster {
 }
 
 onDemo {
-  withInfrastructurePipeline('payments', environment.demoName, 'nonprod')
+  withInfraPipeline('payments', environment.demoName, 'nonprod')
 }
