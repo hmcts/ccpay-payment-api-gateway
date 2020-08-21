@@ -1,3 +1,6 @@
+provider "azurerm" {
+  version = "1.36.1"
+}
 locals {
   s2sUrl = "http://rpe-service-auth-provider-${var.env}.service.core-compute-${var.env}.internal"
   # list of the thumbprints of the SSL certificates that should be accepted by the API (gateway)
@@ -14,12 +17,12 @@ data "azurerm_key_vault" "payment_key_vault" {
 
 data "azurerm_key_vault_secret" "s2s_client_secret" {
   name = "gateway-s2s-client-secret"
-  vault_uri = "${data.azurerm_key_vault.payment_key_vault.vault_uri}"
+  key_vault_id = "${data.azurerm_key_vault.payment_key_vault.id}"
 }
 
 data "azurerm_key_vault_secret" "s2s_client_id" {
   name = "gateway-s2s-client-id"
-  vault_uri = "${data.azurerm_key_vault.payment_key_vault.vault_uri}"
+  key_vault_id = "${data.azurerm_key_vault.payment_key_vault.id}"
 }
 
 data "template_file" "policy_template" {
