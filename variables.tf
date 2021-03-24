@@ -3,13 +3,18 @@ variable "product" {
   default = "payments"
 }
 
+variable "core_product" {
+  type = string
+  default = "ccpay"
+}
+
 variable "location" {
-  type    = "string"
+  type    = string
   default = "UK South"
 }
 
 variable "env" {
-  type = "string"
+  type = string
 }
 
 variable "tenant_id" {
@@ -22,7 +27,7 @@ variable "jenkins_AAD_objectId" {
 
 # thumbprint of the SSL certificate for API gateway tests
 variable api_gateway_test_certificate_thumbprints {
-  type = "list"
+  type = list(string)
   # TODO: remove default and provide environment-specific values
   default = []
 }
