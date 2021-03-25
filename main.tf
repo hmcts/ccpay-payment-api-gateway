@@ -34,7 +34,6 @@ data "template_file" "policy_template" {
 }
 
 data "template_file" "api_template" {
-  provider =azurerm.azure-1
   template = "${file("${path.module}/template/api.json")}"
 }
 resource "azurerm_template_deployment" "api" {
