@@ -34,9 +34,11 @@ data "template_file" "policy_template" {
 }
 
 data "template_file" "api_template" {
+  provider =azurerm.azure-1
   template = "${file("${path.module}/template/api.json")}"
 }
 resource "azurerm_template_deployment" "api" {
+  provider =azurerm.azure-1
   template_body       = data.template_file.api_template.rendered
   name                = join("-", [var.product, "api",var.env])
   deployment_mode     = "Incremental"
