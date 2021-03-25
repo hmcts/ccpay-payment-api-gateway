@@ -1,7 +1,3 @@
-provider "azurerm" {
-  version = "=2.20.0"
-  features {}
-}
 locals {
   s2sUrl = "http://rpe-service-auth-provider-${var.env}.service.core-compute-${var.env}.internal"
   # list of the thumbprints of the SSL certificates that should be accepted by the API (gateway)
