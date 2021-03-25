@@ -11,3 +11,7 @@ terraform {
 provider "azurerm" {
   features {}
 }
+provider "azurerm" {
+  alias = "azure-1"
+  features {}
+}
