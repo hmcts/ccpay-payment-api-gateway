@@ -17,7 +17,7 @@ variable "env" {
   type = string
 }
 
-variable “common_tags” {
+variable "common_tags" {
   type = map(string)
 }
 
