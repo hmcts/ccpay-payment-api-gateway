@@ -2,4 +2,4 @@
 //noinspection GroovyUnusedAssignment
 @Library("Infrastructure") _
 
-withInfraPipeline('payments') {}
+withInfraPipeline('paymentsgw') {}
