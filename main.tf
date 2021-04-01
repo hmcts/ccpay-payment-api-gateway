@@ -55,4 +55,4 @@ data "template_file" "policy_template" {
 #     apiBasePath               = "${local.api_base_path}"
 #     policy                    = "${data.template_file.policy_template.rendered}"
 #   }
-}
+#}
