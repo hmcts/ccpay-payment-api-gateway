@@ -36,9 +36,10 @@ data "template_file" "policy_template" {
   }
 }
 
-data "template_file" "api_template" {
-  template = "${file("${path.module}/template/api.json")}"
-}
+# data "template_file" "api_template" {
+#   template = "${file("${path.module}/template/api.json")}"
+# }
+
 # resource "azurerm_template_deployment" "api" {
 #   template_body       = "${data.template_file.api_template.rendered}"
 #   name                = "${var.product}-api-${var.env}"
