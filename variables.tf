@@ -27,3 +27,7 @@ variable "api_gateway_test_certificate_thumbprints" {
   type    = list(any)
   default = [] # TODO: remove default and provide environment-specific values
 }
+
+variable "common_tags" {
+  type = map(string)
+}
