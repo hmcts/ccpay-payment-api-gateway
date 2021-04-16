@@ -1,5 +1,9 @@
 variable "product" {
   type    = string
+}
+
+variable "product_name" {
+  type    = string
   default = "payments"
 }
 
@@ -26,4 +30,8 @@ variable "jenkins_AAD_objectId" {
 variable "api_gateway_test_certificate_thumbprints" {
   type    = list(any)
   default = [] # TODO: remove default and provide environment-specific values
+}
+
+variable "common_tags" {
+  type = map(string)
 }

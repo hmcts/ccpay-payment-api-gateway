@@ -29,14 +29,14 @@ data "azurerm_key_vault_secret" "s2s_client_id" {
 
 module "api_mgmt_product" {
   source        = "git@github.com:hmcts/cnp-module-api-mgmt-product?ref=master"
-  name          = var.product
+  name          = var.product_name
   api_mgmt_name = local.api_mgmt_name
   api_mgmt_rg   = local.api_mgmt_rg
 }
 
 module "api_mgmt_api" {
   source        = "git@github.com:hmcts/cnp-module-api-mgmt-api?ref=master"
-  name          = join("-", [var.product, "api"])
+  name          = join("-", [var.product_name, "api"])
   display_name  = "Payments API"
   api_mgmt_name = local.api_mgmt_name
   api_mgmt_rg   = local.api_mgmt_rg
