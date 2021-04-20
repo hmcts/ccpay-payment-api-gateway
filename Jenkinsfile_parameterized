@@ -7,4 +7,4 @@ properties([
 		])
 ])
 
-withInfrastructurePipeline('payments', params.ENVIRONMENT, 'sandbox')
+withInfrastructurePipeline('paymentsgw', params.ENVIRONMENT, 'sandbox')
