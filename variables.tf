@@ -4,6 +4,10 @@ variable "product" {
 
 variable "product_name" {
   type    = string
+}
+
+variable "product_name" {
+  type    = string
   default = "payments"
 }
 
