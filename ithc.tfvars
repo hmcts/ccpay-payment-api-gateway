@@ -1,0 +1,1 @@
+api_gateway_test_certificate_thumbprints = ["B49BDDE7818B78058AC7401BE0284A40845031E3"]
