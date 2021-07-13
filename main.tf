@@ -8,7 +8,7 @@ locals {
   s2sUrl           = join("", ["http://rpe-service-auth-provider-", var.env, ".service.core-compute-", var.env, ".internal"])
 
   # list of the thumbprints of the SSL certificates that should be accepted by the API (gateway)
-  thumbprints_in_quotes     = formatlist("&quot;%s&quot;", var.api_gateway_test_certificate_thumbprints)
+  thumbprints_in_quotes     = formatlist("\"%s\"", var.api_gateway_test_certificate_thumbprints)
   thumbprints_in_quotes_str = join(",", local.thumbprints_in_quotes)
 }
 
@@ -43,7 +43,7 @@ module "api_mgmt_api" {
   product_id    = module.api_mgmt_product.product_id
   path          = local.api_base_path
   service_url   = local.payments_api_url
-  swagger_url   = "https://raw.githubusercontent.com/hmcts/reform-api-docs/master/docs/specs/ccpay-payment-app.payments.json"
+  swagger_url   = "https://raw.githubusercontent.com/hmcts/reform-api-docs/master/docs/specs/ccpay-payment-app.recon-payments.json"
   revision      = "1"
 }
 
