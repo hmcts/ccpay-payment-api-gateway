@@ -62,7 +62,7 @@
             <when condition="@(context.Response.StatusCode == 200)">
                 <find-and-replace from="giro_slip_no" to="bank_giro_credit_slip_number" />
                 <find-and-replace from="volume" to="volume_amount" />
-                <find-and-replace from="reference" to="fee_reference" />
+                <find-and-replace from="&quot;reference&quot;" to="&quot;fee_reference&quot;" />
             </when>
         </choose>
     </outbound>
