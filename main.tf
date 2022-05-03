@@ -42,6 +42,7 @@ module "api_mgmt_api" {
   api_mgmt_rg   = local.api_mgmt_rg
   product_id    = module.api_mgmt_product.product_id
   path          = local.api_base_path
+  protocols     = ["http", "https"]
   service_url   = local.payments_api_url
   swagger_url   = "https://raw.githubusercontent.com/hmcts/reform-api-docs/master/docs/specs/ccpay-payment-app.recon-payments.json"
   revision      = "1"
