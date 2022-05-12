@@ -89,12 +89,12 @@ module "ccpay-payment-api" {
   api_mgmt_rg   = local.api_mgmt_rg_cft
   revision      = "1"
   service_url   = local.payments_api_url
-  product_id    = module.api_mgmt_product.product_id
+  product_id    = module.ccpay-payment-product.product_id
   name          = join("-", [var.product_name, "apiList"])
   protocols     = ["https"]
   display_name  = "Payments API"
   path          = local.api_base_path
-  swagger_url   = "https://raw.githubusercontent.com/hmcts/reform-api-docs/master/docs/specs/ccpay-payment-app.freg_api.json"
+  swagger_url   = "https://raw.githubusercontent.com/hmcts/reform-api-docs/master/docs/specs/ccpay-payment-app.status.json"
 
   providers = {
     azurerm = azurerm.cftappsdemo
