@@ -1,4 +1,5 @@
 provider "azurerm" {
+  alias = "cftappsdemo"
   features {}
 }
 
