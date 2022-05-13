@@ -16,7 +16,6 @@ locals {
   thumbprints_in_quotes     = formatlist("\"%s\"", var.api_gateway_test_certificate_thumbprints)
   thumbprints_in_quotes_str = join(",", local.thumbprints_in_quotes)
 
-    core_product_vaultName = join("-", [var.core_product, var.env])
     api_mgmt_name_cft        = join("-", ["cft-api-mgmt", var.env])
     api_mgmt_rg_cft          = join("-", ["cft", var.env, "network-rg"])
 }
