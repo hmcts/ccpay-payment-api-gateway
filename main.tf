@@ -1,3 +1,8 @@
+provider "azurerm" {
+  alias = "cftappsdemo"
+  features {}
+}
+
 locals {
   api_mgmt_name     = join("-", ["core-api-mgmt", var.env])
   api_mgmt_rg       = join("-", ["core-infra", var.env])
