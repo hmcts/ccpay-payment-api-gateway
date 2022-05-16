@@ -35,8 +35,3 @@ variable "api_gateway_test_certificate_thumbprints" {
 variable "common_tags" {
   type = map(string)
 }
-
-variable "open_api_spec_content_format" {
-  type        = openapi
-  description = "The format of the content from which the API Definition should be imported. Possible values are: openapi, openapi+json, openapi+json-link, openapi-link, swagger-json, swagger-link-json, wadl-link-json, wadl-xml, wsdl and wsdl-link."
-}
