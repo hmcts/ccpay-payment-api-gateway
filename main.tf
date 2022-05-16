@@ -98,6 +98,9 @@ module "ccpay-payment-api" {
   display_name  = "Payments API"
   path          = local.api_base_path
   swagger_url   = "https://raw.githubusercontent.com/hmcts/reform-api-docs/master/docs/specs/ccpay-payment-app.status.json"
+  import {
+      content_format = var.open_api_spec_content_format
+    }
 
   providers = {
     azurerm = azurerm.cftappsdemo
