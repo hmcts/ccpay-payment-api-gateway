@@ -110,7 +110,7 @@ module "ccpay-payment-policy" {
   api_mgmt_name = local.api_mgmt_name_cft
   api_mgmt_rg   = local.api_mgmt_rg_cft
 
-  api_name               =  module.api_mgmt_api.name
+  api_name               =  module.ccpay-payment-api.name
   api_policy_xml_content = data.template_file.policy_template.rendered
 
   providers = {
