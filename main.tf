@@ -137,38 +137,4 @@ resource "azurerm_api_management_user" "payment_Ranjeet" {
   provider = azurerm.cftappsdemo
 }
 
-resource "azurerm_api_management_subscription" "Ranjeet_sub_payment" {
-  api_management_name = local.api_mgmt_name_cft
-  resource_group_name = local.api_mgmt_rg_cft
-  user_id             = azurerm_api_management_user.payment_Ranjeet.id
-  product_id          = data.azurerm_api_management_product.paymentcft.id
-  display_name        = "payment Subscription ranjeet"
-  state               = "active"
-
-  provider = azurerm.cftappsdemo
-}
-    
-      
-resource "azurerm_api_management_user" "payment_sayali" {
-  api_management_name = local.api_mgmt_name_cft
-  resource_group_name = local.api_mgmt_rg_cft
-  user_id             = "5931a75ae4bbd512288c790c"
-  first_name          = "Sayali"
-  last_name           = "Salunkhe"
-  email               = "sayali.salunkhe@hmcts.net"
-  state               = "active"
-
-  provider = azurerm.cftappsdemo
-}
-
-resource "azurerm_api_management_subscription" "sayali_sub_payment" {
-  api_management_name = local.api_mgmt_name_cft
-  resource_group_name = local.api_mgmt_rg_cft
-  user_id             = azurerm_api_management_user.payment_sayali.id
-  product_id          = data.azurerm_api_management_product.paymentcft.id
-  display_name        = "payment Subscription sayali"
-  state               = "active"
-
-  provider = azurerm.cftappsdemo
-}
-}
+ 
