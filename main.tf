@@ -123,6 +123,7 @@ module "ccpay-payment-policy" {
   providers = {
     azurerm = azurerm.cftappsdemo
   }
+ }
     
   
 resource "azurerm_api_management_user" "payment_Ranjeet" {
