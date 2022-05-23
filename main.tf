@@ -189,12 +189,7 @@ resource "azurerm_api_management_user" "payment_sayali" {
 resource "azurerm_api_management_user" "payment_Vamshi" {
   api_management_name = local.api_mgmt_name_cft
   resource_group_name = local.api_mgmt_rg_cft
-  user_id             = "5931a75ae4bbd512288c991c"
-  first_name          = "Vamshi"
-  last_name           = "Rudrabhatla"
-  email               = "vamshi.rudrabhatla@HMCTS.NET"
-  state               = "active"
-
+  user_id             = "5931a75ae4bbd512288c680c"
   provider = azurerm.cftappsdemo
 }
  
