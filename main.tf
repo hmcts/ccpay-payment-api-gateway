@@ -186,7 +186,7 @@ resource "azurerm_api_management_user" "payment_sayali" {
   provider            = azurerm.cftappsdemo
 }
 
-resource "azurerm_api_management_user" "payment_Vamshi" {
+ data "azurerm_api_management_user" "payment_Vamshi" {
   api_management_name = local.api_mgmt_name_cft
   resource_group_name = local.api_mgmt_rg_cft
   user_id             = "5931a75ae4bbd512288c680c"
@@ -196,7 +196,7 @@ resource "azurerm_api_management_user" "payment_Vamshi" {
 resource "azurerm_api_management_subscription" "Vamshi_sub_payment" {
   api_management_name = local.api_mgmt_name_cft
   resource_group_name = local.api_mgmt_rg_cft
-  user_id             = azurerm_api_management_user.payment_Vamshi.id
+  user_id             = data.azurerm_api_management_user.payment_Vamshi.id
   product_id          = data.azurerm_api_management_product.paymentcft.id
   display_name        = "payment Subscription Vamshi"
   state               = "active"
