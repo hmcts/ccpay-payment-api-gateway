@@ -1,18 +1,18 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ""
+  name: "ccpay-payment-api-gateway"
   annotations:
     # This must match folder-name/job-name in Jenkins.
     jenkins.io/job-full-name: cft:HMCTS_a_to_c/ccpay-payment-api-gateway
     github.com/project-slug: hmcts/ccpay-payment-api-gateway
   tags:
-    - nodejs
+    - terraform
   links:
-    - url: https://hmcts-reform.slack.com/app_redirect?channel=
-      title: " on Slack"
+    - url: https://hmcts-reform.slack.com/app_redirect?channel=cc-payments
+      title: "#cc-payments on Slack"
       icon: chat
 spec:
   type: service
   lifecycle: production
-  owner: 
+  owner: dcd_group_fees_pay_v2
