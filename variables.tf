@@ -35,3 +35,13 @@ variable "api_gateway_test_certificate_thumbprints" {
 variable "common_tags" {
   type = map(string)
 }
+
+variable "appinsights_location" {
+  default     = "West Europe"
+  description = "Location for Application Insights"
+}
+
+variable "application_type" {
+  default     = "web"
+  description = "Type of Application Insights (web/Other)"
+}
