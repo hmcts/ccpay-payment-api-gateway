@@ -18,6 +18,6 @@ module "alert-action-group" {
  # value        = module.alert-action-group.action_group_name
 #}
 
-#output "action_group_name" {
-  #value = module.alert-action-group.action_group_name
-#}
+output "action_group_name" {
+  value = module.alert-action-group.action_group_name
+}
