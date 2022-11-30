@@ -21,5 +21,5 @@ EOF
   custom_email_subject       = "Send Letter Service Exception"
   trigger_threshold_operator = "GreaterThan"
   trigger_threshold          = 0
-  resourcegroup_name         = azurerm_resource_group.rg.name
+  resourcegroup_name         = local.api_mgmt_rg
 }
