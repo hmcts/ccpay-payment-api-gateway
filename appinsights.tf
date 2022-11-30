@@ -7,7 +7,7 @@ resource "azurerm_key_vault_secret" "app_insights_connection_string" {
 resource "azurerm_application_insights" "appinsights" {
   name                = "${var.product}-${var.component}-appinsights-${var.env}"
   location            = var.appinsights_location
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = local.api_mgmt_rg
   application_type    = var.application_type
   tags                = var.common_tags
 
