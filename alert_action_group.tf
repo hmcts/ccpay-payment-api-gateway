@@ -1,7 +1,4 @@
-data "azurerm_key_vault_secret" "source_bsp_email_secret" {
-  #key_vault_id = module.send-letter-key-vault.key_vault_id
-  name         = "send-letter-alert-email"
-}
+
 
 module "alert-action-group" {
   source   = "git@github.com:hmcts/cnp-module-action-group"
