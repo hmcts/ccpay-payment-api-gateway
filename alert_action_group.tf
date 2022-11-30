@@ -1,5 +1,5 @@
 data "azurerm_key_vault_secret" "source_bsp_email_secret" {
-  key_vault_id = module.send-letter-key-vault.key_vault_id
+  #key_vault_id = module.send-letter-key-vault.key_vault_id
   name         = "send-letter-alert-email"
 }
 
