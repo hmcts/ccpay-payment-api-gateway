@@ -12,12 +12,12 @@ module "alert-action-group" {
   email_receiver_address = "anshika.nigam@hmcts.net"
 }
 
-resource "azurerm_key_vault_secret" "alert_action_group_name" {
+#resource "azurerm_key_vault_secret" "alert_action_group_name" {
   #key_vault_id = module.send-letter-key-vault.key_vault_id
-  name         = "alert-action-group-name"
-  value        = module.alert-action-group.action_group_name
-}
+ # name         = "alert-action-group-name"
+ # value        = module.alert-action-group.action_group_name
+#}
 
-output "action_group_name" {
-  value = module.alert-action-group.action_group_name
-}
+#output "action_group_name" {
+  #value = module.alert-action-group.action_group_name
+#}
