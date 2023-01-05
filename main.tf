@@ -78,3 +78,13 @@ resource "azurerm_api_management_user" "user_payment" {
   state               = "active"
 }
 
+resource "azurerm_api_management_subscription" "payment_subscription" {
+  api_management_name = local.api_mgmt_name
+  resource_group_name = local.api_mgmt_rg
+  user_id             = azurerm_api_management_user.user_payment.id
+  product_id          = odule.api_mgmt_product.product_id
+  display_name        = "Payment subscription"
+  state               = "active"
+
+}
+
