@@ -71,20 +71,12 @@ module "api_mgmt_policy" {
 resource "azurerm_api_management_user" "user_payment" {
   api_management_name = local.api_mgmt_name
   resource_group_name = local.api_mgmt_rg
-  user_id             = "5731a75ae4bbd512288c690e"
-  first_name          = "Anooj"
-  last_name           = "Kurup"
-  email               = "anooj.kurup@hmcts.net"
+  user_id             = "5731a75ae4bcd512288c690e"
+  first_name          = "Connor"
+  last_name           = "Leeding"
+  email               = "Connor.Leeding@hmcts.net"
   state               = "active"
 }
 
-resource "azurerm_api_management_subscription" "payment_subscription" {
-  api_management_name = local.api_mgmt_name
-  resource_group_name = local.api_mgmt_rg
-  user_id             = azurerm_api_management_user.user_payment.id
-  product_id          = module.api_mgmt_product.product_id
-  display_name        = "Payment subscription"
-  state               = "active"
 
-}
 
