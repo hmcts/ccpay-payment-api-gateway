@@ -77,14 +77,6 @@ resource "azurerm_api_management_user" "user_payment" {
   email               = "anooj.kurup@hmcts.net"
   state               = "active"
 }
-resource "azurerm_api_management_subscription" "paymentsubscription" {
-  api_management_name = local.api_mgmt_name
-  resource_group_name = local.api_mgmt_rg
-  user_id             = azurerm_api_management_user.user_payment.id
-  product_id          = module.api_mgmt_product.product_id
-  display_name        = "Paymentsubscription"
-  state               = "active"
 
-}
 
 
