@@ -67,3 +67,16 @@ module "api_mgmt_policy" {
   api_policy_xml_content = data.template_file.policy_template.rendered
 }
 
+
+resource "azurerm_api_management_user" "user_payment" {
+  api_management_name = local.api_mgmt_name
+  resource_group_name = local.api_mgmt_rg
+  user_id             = "5731a75ae4bcd512288c690e"
+  first_name          = "Anooj"
+  last_name           = "Kurup"
+  email               = "anooj.kurup@hmcts.net"
+  state               = "active"
+}
+
+
+
