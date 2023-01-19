@@ -88,12 +88,7 @@ module "api_mgmt_policy" {
   }
 }
 
-  data "azurerm_api_management_product" "paymentcft" {
-  product_id          = module.ccpay-payment-product.product_id
-  api_management_name = local.api_mgmt_name_cft
-  resource_group_name = local.api_mgmt_rg_cft
-  provider            = azurerm.cftappsdemo
-}
+
 
 module "ccpay-payment-api" {
   source = "git@github.com:hmcts/cnp-module-api-mgmt-api?ref=master"
