@@ -10,6 +10,9 @@ locals {
   # list of the thumbprints of the SSL certificates that should be accepted by the API (gateway)
   thumbprints_in_quotes     = formatlist("\"%s\"", var.api_gateway_test_certificate_thumbprints)
   thumbprints_in_quotes_str = join(",", local.thumbprints_in_quotes)
+  
+   api_mgmt_name_cft        = join("-", ["cft-api-mgmt", var.env])
+    api_mgmt_rg_cft          = join("-", ["cft", var.env, "network-rg"])
 }
 
 data "azurerm_key_vault" "payment_key_vault" {
