@@ -124,6 +124,22 @@ module "ccpay-payment-policy" {
  }
 
   
+data "azurerm_api_management_user" "payment_user" {
+  user_id             = "5731a75ae4bcd512288c690e"
+  api_management_name = local.api_mgmt_name
+  resource_group_name = local.api_mgmt_rg
+}
+
+
+resource "azurerm_api_management_subscription" "Payment_subs" {
+  api_management_name = local.api_mgmt_name
+  resource_group_name = local.api_mgmt_rg
+  user_id             = data.azurerm_api_management_user.refund_user.id
+  product_id          = module.api_mgmt_product.id
+  display_name        = "Payment Subscription"
+  state               = "active"
+}
+  
    
 
 
