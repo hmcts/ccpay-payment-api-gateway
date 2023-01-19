@@ -15,6 +15,12 @@ locals {
     api_mgmt_rg_cft          = join("-", ["cft", var.env, "network-rg"])
 }
 
+provider "azurerm" {
+  alias           = "cftappsdemo"
+  subscription_id = "d025fece-ce99-4df2-b7a9-b649d3ff2060"
+  features {}
+}
+
 data "azurerm_key_vault" "payment_key_vault" {
   name                = local.payment_key_vault
   resource_group_name = local.payment_key_vault
