@@ -150,7 +150,7 @@ resource "azurerm_api_management_user" "payment_sayali" {
   api_management_name = local.api_mgmt_name_cft
   resource_group_name = local.api_mgmt_rg_cft
   user_id             = azurerm_api_management_user.payment_sayali.id
-  product_id          = data.azurerm_api_management_product.paymentcft.id
+  product_id          = module.azurerm_api_management_product.ccpay-payment-product.id
   display_name        = "payment Subscription sayali"
   state               = "active"
   provider = azurerm.cftappsdemo
@@ -160,7 +160,7 @@ resource "azurerm_api_management_user" "payment_sayali" {
   api_management_name = local.api_mgmt_name_cft
   resource_group_name = local.api_mgmt_rg_cft
   user_id             = azurerm_api_management_user.payment_Ranjeet.id
-  product_id          = data.azurerm_api_management_product.paymentcft.id
+  product_id          = data.azurerm_api_management_product.ccpay-payment-product.id
   display_name        = "payment Subscription ranjeet"
   state               = "active"
   provider = azurerm.cftappsdemo
