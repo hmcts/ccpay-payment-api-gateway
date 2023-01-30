@@ -16,6 +16,9 @@ variable "env" {
   type = string
 }
 
+variable "component" {
+}
+
 variable "tenant_id" {
   type        = string
   description = "(Required) The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. This is usually sourced from environemnt variables and not normally required to be specified."
@@ -34,4 +37,14 @@ variable "api_gateway_test_certificate_thumbprints" {
 
 variable "common_tags" {
   type = map(string)
+}
+
+variable "appinsights_location" {
+  default     = "West Europe"
+  description = "Location for Application Insights"
+}
+
+variable "application_type" {
+  default     = "web"
+  description = "Type of Application Insights (web/Other)"
 }
