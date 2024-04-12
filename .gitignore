@@ -35,3 +35,5 @@ terraform.rc
 
 # Terraform init lock file
 .terraform.lock.hcl
+
+.idea/

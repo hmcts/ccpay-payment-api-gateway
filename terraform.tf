@@ -1,9 +1,10 @@
 provider "azurerm" {
+  alias           = "aks-cftapps"
   features {}
 }
 
 terraform {
-  required_version = ">= 1.3.7"
+  required_version = ">= 1.3.99"
 
   backend "azurerm" {}
 
