@@ -1,10 +1,6 @@
 provider "azurerm" {
   features {}
-}
-
-provider "azurerm" {
-  features {}
-  skip_provider_registration = true
+  # skip_provider_registration = true
   alias                      = "aks-cftapps"
   subscription_id            = var.aks_subscription_id
 }
