@@ -1,3 +1,14 @@
+provider "azurerm" {
+  features {}
+}
+
+provider "azurerm" {
+  features {}
+  skip_provider_registration = true
+  alias                      = "aks-cftapps"
+  subscription_id            = var.aks_subscription_id
+}
+
 locals {
   api_mgmt_name     = join("-", ["core-api-mgmt", var.env])
   api_mgmt_rg       = join("-", ["core-infra", var.env])
@@ -64,4 +75,14 @@ module "api_mgmt_policy" {
   api_mgmt_rg            = local.api_mgmt_rg
   api_name               = module.api_mgmt_api.name
   api_policy_xml_content = data.template_file.policy_template.rendered
+}
+
+resource "azurerm_api_management_user" "api_mgmt_api_user_dave_jones" {
+  api_management_name = local.api_mgmt_name
+  resource_group_name = local.api_mgmt_rg
+  user_id             = "d4c90bc3-9c63-4a14-acf5-6a9d1a25fe36"
+  email               = "dave.jones@hmcts.net"
+  first_name          = "Dave"
+  last_name           = "Jones"
+  confirmation        = "signup"
 }
