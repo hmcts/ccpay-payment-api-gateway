@@ -1,7 +1,6 @@
 provider "azurerm" {
-  alias           = "aks-cftapps"
-  subscription_id = var.aks_subscription_id
   features {}
+  skip_provider_registration = true
 }
 
 locals {
@@ -76,7 +75,6 @@ resource "azurerm_api_management_user" "api_mgmt_api_user_dave_jones" {
   api_management_name = local.api_mgmt_name
   resource_group_name = local.api_mgmt_rg
   user_id             = "d4c90bc3-9c63-4a14-acf5-6a9d1a25fe36"
-  provider            = azurerm.aks-cftapps
   email               = "dave.jones@hmcts.net"
   first_name          = "Dave"
   last_name           = "Jones"
