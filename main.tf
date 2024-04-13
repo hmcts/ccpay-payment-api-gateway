@@ -1,6 +1,6 @@
 provider "azurerm" {
-  subscription_id = var.aks_subscription_id
   features {}
+  skip_provider_registration = true
 }
 
 locals {
