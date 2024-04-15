@@ -74,8 +74,10 @@ module "api_mgmt_policy" {
 resource "azurerm_api_management_user" "api_mgmt_api_user_dave_jones" {
   api_management_name = local.api_mgmt_name
   resource_group_name = local.api_mgmt_rg
-  user_id             = "d4c90bc3-9c63-4a14-acf5-6a9d1a25fe36"
+  user_id             = "d4c90bc39c634a14acf56a9d1a25fe36"
   email               = "dave.jones@hmcts.net"
   first_name          = "Dave"
   last_name           = "Jones"
+  confirmation        = "signup"
+  state               = "active"
 }
