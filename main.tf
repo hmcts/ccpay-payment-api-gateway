@@ -78,6 +78,4 @@ resource "azurerm_api_management_user" "api_mgmt_api_user_dave_jones" {
   email               = "dave.jones@hmcts.net"
   first_name          = "Dave"
   last_name           = "Jones"
-  confirmation        = "signup"
-  state               = "active"
 }
