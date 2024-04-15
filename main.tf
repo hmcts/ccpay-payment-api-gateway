@@ -70,15 +70,3 @@ module "api_mgmt_policy" {
   api_name               = module.api_mgmt_api.name
   api_policy_xml_content = data.template_file.policy_template.rendered
 }
-
-resource "azurerm_api_management_user" "api_mgmt_api_user_dave_jones" {
-  api_management_name = local.api_mgmt_name
-  resource_group_name = local.api_mgmt_rg
-  user_id             = "d4c90bc39c634a14acf56a9d1a25fe36"
-  first_name          = "Dave"
-  last_name           = "Jones"
-  email               = "dave.jones@hmcts.net"
-  state               = "active"
-
-  depends_on = [module.api_mgmt_api]
-}
