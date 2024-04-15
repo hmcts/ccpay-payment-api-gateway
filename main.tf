@@ -75,9 +75,10 @@ resource "azurerm_api_management_user" "api_mgmt_api_user_dave_jones" {
   api_management_name = local.api_mgmt_name
   resource_group_name = local.api_mgmt_rg
   user_id             = "d4c90bc39c634a14acf56a9d1a25fe36"
-  email               = "dave.jones@hmcts.net"
   first_name          = "Dave"
   last_name           = "Jones"
-  confirmation        = "signup"
+  email               = "dave.jones@hmcts.net"
   state               = "active"
+
+  depends_on = [module.api_mgmt_api]
 }
