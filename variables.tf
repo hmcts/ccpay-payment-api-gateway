@@ -38,3 +38,7 @@ variable "common_tags" {
 
 variable "aks_subscription_id" {
 }
+
+variable "apim_suffix" {
+  default = ""
+}
