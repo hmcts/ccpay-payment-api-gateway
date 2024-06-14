@@ -1,6 +1,6 @@
 locals {
   cft_api_mgmt_name     = join("-", ["cft-api-mgmt", var.env])
-  cft_api_mgmt_rg_cft       = join("-", ["cft", var.env, "network-rg"])
+  cft_api_mgmt_rg       = join("-", ["cft", var.env, "network-rg"])
 }
 
 module "cft_api_mgmt_product" {
