@@ -35,3 +35,6 @@ variable "api_gateway_test_certificate_thumbprints" {
 variable "common_tags" {
   type = map(string)
 }
+
+variable "aks_subscription_id" {
+}
