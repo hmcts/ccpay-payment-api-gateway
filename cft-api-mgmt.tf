@@ -30,6 +30,7 @@ module "cft_api_mgmt_api" {
   path          = local.api_base_path
   service_url   = local.payments_api_url
   swagger_url   = "https://raw.githubusercontent.com/hmcts/reform-api-docs/master/docs/specs/ccpay-payment-app.recon-payments-v0.3.json"
+  protocols     = ["http", "https"]
   revision      = "1"
   providers             = {
     azurerm = azurerm.aks-cftapps
