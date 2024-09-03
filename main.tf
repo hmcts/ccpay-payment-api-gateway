@@ -1,8 +1,3 @@
-provider "azurerm" {
-  features {}
-  skip_provider_registration = true
-}
-
 locals {
   payment_key_vault = join("-", ["ccpay", var.env])
   payments_api_url = join("", ["http://payment-api-", var.env, ".service.core-compute-", var.env, ".internal"])
