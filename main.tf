@@ -1,7 +1,7 @@
 locals {
   payment_key_vault = join("-", ["ccpay", var.env])
-  payments_api_url = join("", ["http://payment-api-", var.env, ".service.core-compute-", var.env, ".internal"])
-  s2sUrl           = join("", ["http://rpe-service-auth-provider-", var.env, ".service.core-compute-", var.env, ".internal"])
+  payments_api_url  = join("", ["http://payment-api-", var.env, ".service.core-compute-", var.env, ".internal"])
+  s2sUrl            = join("", ["http://rpe-service-auth-provider-", var.env, ".service.core-compute-", var.env, ".internal"])
 
   # list of the thumbprints of the SSL certificates that should be accepted by the API (gateway)
   thumbprints_in_quotes     = formatlist("\"%s\"", var.api_gateway_test_certificate_thumbprints)
