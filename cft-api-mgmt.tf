@@ -5,6 +5,13 @@ locals {
   cft_api_base_path   = "payments-api"
 }
 
+provider "azurerm" {
+  alias           = "aks-cftapps"
+  subscription_id = var.aks_subscription_id
+  source          = "hashicorp/azurerm"
+  features {}
+}
+
 data "template_file" "cft_policy_template" {
   template = file("${path.module}/template/cft-api-policy.xml")
 
