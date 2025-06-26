@@ -20,7 +20,7 @@ data "template_file" "cft_policy_template" {
     s2s_base_url                    = local.s2sUrl
   }
 
-  depends_on =
+  depends_on = [
     resource.azurerm_api_management_named_value.ccpay_s2s_client_secret
   ]
 }
