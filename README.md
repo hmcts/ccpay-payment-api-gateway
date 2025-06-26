@@ -34,6 +34,3 @@ https://tools.hmcts.net/confluence/display/DTSFP/CFT+APIM+Service+Operational+Gu
 
 ### How to generate thumbprint:
 https://tools.hmcts.net/confluence/display/RP/Test+Api+gateway+with+client+certificate
-
-
-
