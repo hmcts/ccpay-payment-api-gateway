@@ -4,30 +4,49 @@
     </backend>
     <inbound>
         <base/>
+        <!-- Capture AppGW-injected thumbprint before removing client-visible header -->
+        <set-variable name="arr_cert_thumbprint" value="@(context.Request.Headers.GetValueOrDefault(&quot;X-ARR-ClientCertThumbprint&quot;, &quot;&quot;))" />
+
         <!-- Strip any incoming client certificate thumbprint header -->
         <set-header name="X-ARR-ClientCertThumbprint" exists-action="delete" />
 
+        <set-variable name="effective_client_thumbprint" value="@{
+                if (context.Request.Certificate != null &amp;&amp; !string.IsNullOrEmpty(context.Request.Certificate.Thumbprint))
+                {
+                    return context.Request.Certificate.Thumbprint.ToUpperInvariant();
+                }
+
+                var forwardedThumbprint = (string)context.Variables[&quot;arr_cert_thumbprint&quot;];
+                if (!string.IsNullOrEmpty(forwardedThumbprint))
+                {
+                    return forwardedThumbprint.ToUpperInvariant();
+                }
+
+                return string.Empty;
+        }" />
+
         <choose>
-            <when condition="@(context.Request.Headers["X-ARR-ClientCertThumbprint"] == null)">
+            <when condition="@(string.IsNullOrEmpty((string)context.Variables[&quot;effective_client_thumbprint&quot;]))">
                 <return-response>
                     <set-status code="401" />
                     <set-body>Missing client certificate.</set-body>
                 </return-response>
             </when>
-            <when condition="@(!(new string[] {${allowed_certificate_thumbprints}}.Contains(context.Request.Headers[&quot;X-ARR-ClientCertThumbprint&quot;].First().ToUpperInvariant())))">
-                <return-response>
-                    <set-status code="401" />
-                    <set-body>Invalid client certificate.</set-body>
-                </return-response>
-            </when>
-            <when condition="@(context.Request.Certificate == null || context.Request.Certificate.NotAfter < DateTime.Now || context.Request.Certificate.NotBefore > DateTime.Now || !(new string[] {${allowed_certificate_thumbprints}}.Any(c => c == context.Request.Certificate.Thumbprint)))" >
+            <when condition="@(context.Request.Certificate != null &amp;&amp; (context.Request.Certificate.NotAfter &lt; DateTime.UtcNow || context.Request.Certificate.NotBefore &gt; DateTime.UtcNow))" >
                 <return-response>
                     <set-status code="401" />
                     <set-body>Invalid client certificate. Please check expiry.</set-body>
                 </return-response>
             </when>
+            <when condition="@(!(new string[] {${allowed_certificate_thumbprints}}.Contains((string)context.Variables[&quot;effective_client_thumbprint&quot;])))" >
+                <return-response>
+                    <set-status code="401" />
+                    <set-body>Invalid client certificate.</set-body>
+                </return-response>
+            </when>
         </choose>
-        <!-- generate totp using mgmt named values -->
+
+        <!-- Generate totp using mgmt named values -->
         <set-variable name="client_id" value="{{ccpay-s2s-client-id}}" />
         <set-variable name="client_secret" value="{{ccpay-s2s-client-secret}}" />
         <set-variable name="one_time_password" value="@{
@@ -70,7 +89,7 @@
         </send-request>
 
         <set-header name="ServiceAuthorization" exists-action="override">
-            <value>@("Bearer " + ((IResponse)context.Variables["s2sBearerToken"]).Body.As<string>())</value>
+            <value>@("Bearer " + ((IResponse)context.Variables["s2sBearerToken"]).Body.As&lt;string&gt;())</value>
         </set-header>
     </inbound>
     <outbound>
